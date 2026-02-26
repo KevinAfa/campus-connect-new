@@ -1,0 +1,713 @@
+<!-- <!doctype html> -->
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Campus Connect</title>
+    <link rel="icon" type="image/png" href="/assets/favicon.png">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">  
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    
+    <!-- style -->
+      <style>
+          :root {
+            --dark-bg: #0d1b2a;
+            --accent: #00d084;
+            --accent-dark: #00b070;
+          }
+
+          body {
+            background-color: #f8f9fa;
+          }
+
+          .navbar {
+            background-color: var(--dark-bg) !important;
+            padding: 0.75rem 1rem;
+          }
+
+          .navbar-brand {
+            color: white;
+            font-weight: 700;
+            font-size: 1.6rem;
+          }
+
+          .navbar-brand .leaf {
+            color: var(--accent);
+            font-size: 1.8rem;
+          }
+
+          .form-control {
+            background-color: rgba(255,255,255,0.12);
+            border: none;
+            color: white;
+            border-radius: 50px;
+            padding: 0.65rem 1.25rem;
+          }
+
+          .form-control::placeholder {
+            color: rgba(255,255,255,0.6);
+          }
+
+          .form-control:focus {
+            background-color: rgba(255,255,255,0.18);
+            box-shadow: none;
+            color: white;
+          }
+
+          .btn-search {
+            position: absolute;
+            right: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.3rem;
+            padding: 0;
+          }
+
+          .nav-link, .action-icon {
+            color: white !important;
+            font-size: 1.3rem;
+            position: relative;
+          }
+
+          .action-icon {
+            font-size: 1.4rem;
+            margin-left: 1.2rem;
+          }
+
+          .badge {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            font-size: 0.65rem;
+            padding: 0.35em 0.55em;
+            background-color: var(--accent);
+          }
+
+          .bottom-nav {
+            background-color: var(--dark-bg);
+            border-top: 1px solid #1e3a5a;
+            padding: 0.6rem 0;
+          }
+
+          .bottom-nav .nav-link {
+            color: white;
+            font-size: 0.95rem;
+            padding: 0.4rem 1rem;
+            white-space: nowrap;
+          }
+
+          .bottom-nav .nav-link:hover,
+          .bottom-nav .nav-link.active {
+            color: var(--accent) !important;
+          }
+
+          .hot-badge {
+            background-color: #ff3366;
+            color: white;
+            font-size: 0.7rem;
+            padding: 0.25em 0.5em;
+            border-radius: 4px;
+            margin-left: 0.4rem;
+          }
+
+          .daily-offers {
+            background-color: var(--accent);
+            color: white;
+            font-weight: 600;
+            border-radius: 50px;
+            padding: 0.5rem 1.4rem;
+          }
+
+          @media (max-width: 991px) {
+            .search-container {
+              margin: 1rem 0;
+            }
+            .action-icons {
+              margin-left: auto;
+            }
+          }
+
+              :root {
+            --xtra-green: #00c853;
+            --xtra-dark: #1a3c34;
+          }
+
+          .hero-section {
+            background: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.55)),
+                        url('https://images.unsplash.com/photo-1601600571002-ea5b0d4d7a2f?auto=format&fit=crop&q=80') center/cover no-repeat;
+            min-height: 85vh;
+            color: white;
+            position: relative;
+          }
+
+          .brand-name {
+            font-size: 3.8rem;
+            font-weight: 800;
+            letter-spacing: -1px;
+            color: var(--xtra-green);
+            text-shadow: 3px 3px 12px rgba(0,0,0,0.7);
+          }
+
+          .tagline {
+            font-size: 2.6rem;
+            font-weight: 700;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.8);
+          }
+
+          .subtitle {
+            font-size: 1.25rem;
+            max-width: 580px;
+            line-height: 1.6;
+            background: rgba(0,0,0,0.4);
+            padding: 1.25rem;
+            border-radius: 12px;
+            backdrop-filter: blur(4px);
+          }
+
+          .btn-xtra {
+            background-color: var(--xtra-green);
+            border: none;
+            font-weight: 600;
+            padding: 0.75rem 1.8rem;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+          }
+
+          .btn-xtra:hover {
+            background-color: #00b140;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0,200,83,0.4);
+          }
+
+          .btn-outline-xtra {
+            border-color: var(--xtra-green);
+            color: var(--xtra-green);
+            font-weight: 600;
+          }
+
+          .btn-outline-xtra:hover {
+            background-color: var(--xtra-green);
+            color: white;
+          }
+
+          @media (max-width: 992px) {
+            .brand-name { font-size: 3.1rem; }
+            .tagline    { font-size: 2.1rem; }
+          }
+
+          @media (max-width: 768px) {
+            .brand-name { font-size: 2.6rem; }
+            .tagline    { font-size: 1.9rem; }
+            .hero-section { min-height: 70vh; }
+            .subtitle   { font-size: 1.1rem; }
+          }
+
+            /* Option A: Make Poppins the default font for the whole page */
+        body {
+          font-family: 'Poppins', sans-serif;
+        }
+
+        /* Option B: Use it only for specific elements */
+        h1, h2, h3 {
+          font-family: 'Poppins', sans-serif;
+          font-weight: 700;          /* bold headings */
+        }
+
+        p, li, .content {
+          font-family: 'Poppins', sans-serif;
+          font-weight: 400;          /* regular body text */
+        }
+
+        /* Example with medium weight */
+        .button {
+          font-family: 'Poppins', sans-serif;
+          font-weight: 500;
+          font-size: 1.1rem;
+        }
+
+        .huge-bold {
+          font-family: 'Poppins', sans-serif;
+          font-size: 4.5rem;       /* ≈72px – very big, change to whatever you want */
+          font-weight: 900;        /* maximum thickness Poppins offers */
+          line-height: 1.1;        /* optional: tighter line height looks better on big text */
+          color: #02071a;          /* optional: dark blue for drama */
+          letter-spacing: -0.02em; /* optional: tiny negative spacing = more modern look */
+        }
+
+        .btn {
+          background-color: teal;
+          color: #fff;
+          transition: all .7s;
+        }
+        .btn:hover {
+          color: teal;
+          background-color: #fff;
+          border-color: teal;
+        }
+
+        .bounce-on-hover:hover {
+          color: #00c853 !important; /* matches your "Make Money" green */
+        }
+        .target{
+          z-index: 1;
+        }
+        img {
+          max-width: 100%;
+        }
+        .img-wrapper {
+          overflow: hidden;
+        }
+        img:hover {
+          transform: scale(1.1);
+        }
+        img {
+          transition: all 1s;
+        }
+
+        /* Subtle bounce on hover for cards */
+        .card {
+          transition: transform 0.3s ease-out;   /* Smooth base transition */
+        }
+
+        .card:hover {
+          animation: subtleBounce 0.6s ease-in-out;   /* Trigger bounce once on hover */
+          transform: translateY(-8px);                /* Slight lift at the end for "pop" feel */
+          box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15); /* Optional: deeper shadow on hover */
+        }
+
+        /* Define the bounce keyframes */
+        @keyframes subtleBounce {
+          0%   { transform: translateY(0); }
+          30%  { transform: translateY(-12px); }   /* Peak of bounce */
+          50%  { transform: translateY(0); }
+          70%  { transform: translateY(-6px); }    /* Smaller secondary bounce */
+          100% { transform: translateY(0); }
+        }
+
+        html, body {
+          width: 100%;
+          max-width: 100%;
+          overflow-x: hidden;     /* Prevents horizontal scroll & hides overflow */
+          margin: 0;              /* Removes default margins that can cause issues */
+          padding: 0;
+        }
+
+
+        </style>
+
+    <!--  style end-->
+
+
+      <!-- Navbar -->
+  <!-- Top Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container-fluid px-3 px-md-4">
+
+          <!-- Brand -->
+          <a class="navbar-brand d-flex align-items-center" href="#">
+            <span class="leaf me-2">🛒</span>Campus<span style="color: var(--accent);">Connect</span>
+          </a>
+
+          <!-- Toggler -->
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <!-- Main content -->
+          <div class="collapse navbar-collapse" id="navbarContent">
+
+            <!-- Search (middle on lg+) -->
+            <div class="mx-auto search-container position-relative mt-3 mt-lg-0" style="max-width: 420px; width: 100%;">
+              <input type="search" class="form-control ps-4 pe-5" placeholder="What are you looking for?" aria-label="Search">
+              <button class="btn-search" type="submit">
+                <i class="bi bi-search"></i>
+              </button>
+            </div>
+
+            <!-- Right icons -->
+            <div class="d-flex align-items-center ms-auto action-icons mt-3 mt-lg-0">
+              <a href="#" class="action-icon position-relative">
+                <i class="bi bi-cart"></i>
+                <span class="badge rounded-pill">0</span>
+              </a>
+              <a href="#" class="action-icon position-relative">
+                <i class="bi bi-heart"></i>
+                <span class="badge rounded-pill">0</span>
+              </a>
+              <a href="#" class="action-icon">
+                <i class="bi bi-person"></i>
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </nav>
+
+      <!-- Bottom category bar -->
+      <nav class="navbar bottom-nav navbar-expand navbar-dark">
+        <div class="container-fluid px-3 px-md-4">
+          <ul class="navbar-nav w-100 justify-content-between justify-content-lg-start gap-2 gap-lg-4 flex-nowrap overflow-auto">
+            <li class="nav-item">
+              <a class="nav-link d-flex align-items-center" href="#">
+                <i class="bi bi-cart me-1"></i> New Products
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link d-flex align-items-center" href="#">
+                Best Sales <span class="hot-badge">HOT</span>
+              </a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Special Offers
+              </a>
+                   <ul class="dropdown-menu dropdown-menu-dark">
+                    <li><a class="dropdown-item" href="#">Flash Deals (Today Only)</a></li>
+                    <li><a class="dropdown-item" href="#">Buy 1 Get 1 Free</a></li>
+                    <li><a class="dropdown-item" href="#">Up to 70% Off</a></li>
+                    <li><a class="dropdown-item" href="#">Clearance Sale</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item fw-bold" href="#">View All Offers →</a></li>
+                  </ul>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Quick find
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">News</a>
+            </li>
+            <li class="nav-item ms-lg-auto">
+              <a class="nav-link daily-offers" href="#">
+                <i class="bi bi-gift me-1"></i> Daily Offers
+              </a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+<!-- navbar end -->
+
+
+
+      <!-- body -->
+       <div style="background-color: #f0faf1;">
+        <div class="d-flex">
+          <div class="col-md-6 col-sm-6">
+            <h4 class="fs-1 mt-5 ms-2" style="color: #00d084;">CampusConnect</h4><br>
+            <h4 class="ms-1 huge-bold">Fresher than Ever</h4>
+            <h5 class="ms-2 text-secondary">Hub for all, by students, for students. For the latest campus plots,<br>past papers and educational resources </h5>
+            <button type="button" class="btn rounded rounded-pill mt-3">Start Now</button>
+            <button type="button" class="btn rounded rounded-pill ms-3 mt-3">Discover More</button>
+          </div>
+          <div class="col-md-6 col-sm-6">
+            <img src="/assets/Untitled-1.png" alt="" class="src" style="width: 638px;">
+          </div>
+        </div>
+
+          <div class="parent">
+       <!-- Navbar -->
+        <nav class="navbar navbar-expand-lg bg-light navbar-light mb-2 rounded rounded-pill target shadow-sm container" style="background-color: #1c3e57;">
+          <!-- Container wrapper -->
+          <div class="container-fluid target">
+            
+
+            <!-- Toggle button -->
+            <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <i class="fas fa-bars"></i>
+            </button>
+
+            <!-- Collapsible wrapper -->
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <h2 class="fw-4 text-white"> Subscribe to <span style="color: #00b070;">News Letter</span></h2>
+              </ul>
+
+              <!-- Search -->
+              <form class="w-auto">
+                <input type="search" class="form-control" placeholder="Enter your Email" aria-label="Search">
+              </form>
+
+            </div>
+          </div>
+
+       </div>
+
+
+       <!-- DISCOVER -->
+         <div class="container py-5">
+          <div class="row justify-content-center">
+            <div class="col-lg-8 col-md-10 text-center">
+              <h2 class="fw-bold" style="font-size: 3.5rem; line-height: 1.2;">
+                Discover <span style="color: #00b070;">Categories</span>
+              </h2>
+              <p class="lead text-muted mt-3">
+                Find exactly what you're looking for — from everyday essentials to unique finds.
+              </p>
+
+              <!-- cards -->
+
+              <div class="row row-cols-1 row-cols-md-3 g-4">
+                <!-- Card 1 -->
+                <div class="col">
+                  <div class="card h-100 shadow-sm border-0">
+                    <div class="card-body text-center">
+                      <i class="bi bi-book fs-1 mb-3 d-block" style="color: #00b070;"></i>
+                      <h5 class="card-title fw-bold">Courses & Academics</h5>
+                      <p class="card-text text-muted small">
+                        View schedules, syllabi, enroll, and track your academic progress.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="col">
+                  <div class="card h-100 shadow-sm border-0">
+                    <div class="card-body text-center">
+                      <i class="bi bi-calendar-event fs-1 mb-3 d-block" style="color: #00b070;"></i>
+                      <h5 class="card-title fw-bold">Events & Calendar</h5>
+                      <p class="card-text text-muted small">
+                        Discover lectures, club meetings, sports, workshops and campus happenings.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="col">
+                  <div class="card h-100 shadow-sm border-0">
+                    <div class="card-body text-center">
+                      <i class="bi bi-bookshelf fs-1 mb-3 d-block" style="color: #00b070;"></i>
+                      <h5 class="card-title fw-bold">Library & Resources</h5>
+                      <p class="card-text text-muted small">
+                        Access e-books, journals, databases, study spaces and research tools.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+
+       <!-- HOSTELS -->
+
+       <div>
+          <h6 class="ms-1 fs-1"style="font-weight:bold;">Hostels <span style="color: #00b070;">Available</span></h6>
+        <div class="row row-cols-1 row-cols-md-3 g-4 mb-3 container ms-5">
+          <div class="col">
+            <div class="card h-100">
+              <div class="img-wrapper">
+                <img src="/assets/hostel  1.jpg" class="card-img-top" alt="...">
+              </div>
+              <div class="card-body">
+                <h5 class="card-title fw-bolder">MUST Hostels</h5>
+                <p class="card-text">Mbarara University of Science and Technology (MUST) hosts ...</p>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card h-100">
+              <div class="img-wrapper">
+              <img src="/assets/hostel 2.jpg" class="card-img-top" alt="...">
+              </div>
+              <div class="card-body">
+                <h5 class="card-title fw-bold">Campus Bee Hostel</h5>
+                <p class="card-text">January intake, see vacancies</p>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card h-100">
+              <div class="img-wrapper">
+                <img src="/assets/akamwesi.jpg" class="card-img-top" alt="...">
+              </div>
+              <div class="card-body">
+                <h5 class="card-title fw-bolder">Akamwesi Hostels</h5>
+                <p class="card-text">IUIU ready to expand campus</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- app section -->
+       
+      <div class="row rounded mb-5 align-items-center" style="background-color: #06dd81;">
+        <!-- Left: Text + badges -->
+        <div class="col-lg-6 ps-5 py-2">
+          <h4 class="text-white">Campus Connect</h4>
+          <h2 class="text-white fw-bold" style="font-size: 3rem; line-height: 1.1;">
+            Faster on<br>Mobile
+          </h2>
+          <p class="text-white fs-5 mt-4">
+            A supermarket is a self-service shop offering a wide variety of food,<br>
+            beverages and household products, organized into sections.
+          </p>
+
+          <div class="mt-4 d-flex gap-3 flex-wrap">
+            <img src="/assets/get-it-on-google-play-store-button.png" 
+                alt="Get it on Google Play" 
+                style="height: 45px; width: auto;">
+            <img src="/assets/apple.png" 
+                alt="Download on the App Store" 
+                style="height: 45px; width: auto;">
+          </div>
+        </div>
+
+        <!-- Right: Phone image -->
+        <div class="col-lg-6 text-center text-lg-end py-2 pe-lg-5">
+          <img src="/assets/phone app.png" 
+              alt="Campus Connect Mobile App" 
+              style="max-height: 500px; width: auto; max-width: 100%;">
+        </div>
+      </div>
+
+
+
+       <!-- LATEST UPDATES -->
+
+      <div>
+        <h6 class="ms-1 fs-1"style="font-weight:bold;">Latest <span style="color: #00b070;">News & Blog</span></h6>
+       <div class="row row-cols-1 row-cols-md-3 g-4 mb-3 container ms-5">
+        <div class="col">
+          <div class="card h-100">
+            <div class="img-wrapper">
+              <img src="/assets/iuiu-kampala-campus-conducts-first-ever-campus-based-induction-workshop-for-student-leaders-image-1_1657779205.jpg" class="card-img-top" alt="...">
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">15 February 2026</h5>
+              <p class="card-text">Mbarara University of Science and Technology (MUST) hosts ...</p>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card h-100">
+            <div class="img-wrapper">
+            <img src="/assets/iuiu-kampala-campus-conducts-first-ever-campus-based-induction-workshop-for-student-leaders.jpg" class="card-img-top" alt="...">
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">13 January 2026</h5>
+              <p class="card-text">January intake, see vacancies</p>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card h-100">
+            <div class="img-wrapper">
+              <img src="/assets/iuiu-launches-phd-in-law-program-applications-now-open_611_1751917770.jpg" class="card-img-top" alt="...">
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">23 January 2026</h5>
+              <p class="card-text">IUIU ready to expand campus</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+
+       <!-- z index -->
+       <div class="parent">
+       <!-- Navbar -->
+        <nav class="navbar navbar-expand-lg bg-light navbar-light mb-2 rounded rounded-pill target shadow-sm container" style="background-color: #1c3e57;">
+          <!-- Container wrapper -->
+          <div class="container-fluid target">
+            
+
+            <!-- Toggle button -->
+            <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <i class="fas fa-bars"></i>
+            </button>
+
+            <!-- Collapsible wrapper -->
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <h2 class="fw-4 text-white"> Subscribe to <span style="color: #00b070;">News Letter</span></h2>
+              </ul>
+
+              <!-- Search -->
+              <form class="w-auto">
+                <input type="search" class="form-control" placeholder="Enter your Email" aria-label="Search">
+              </form>
+
+            </div>
+          </div>
+          <!-- Container wrapper -->
+        </nav>
+        <!-- Navbar -->
+
+
+       <!-- Footer start -->
+      <section class="" style="background-color: #122d40; padding: 2rem 1rem;">
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+          <div class="col">
+            <div class="card h-100 bg-transparent border-secondary text-white rounded-4">
+              <div class="card-body">
+                <h5 class="card-title fw-bolder">Campus Connect</h5>
+                <p class="card-text">“Be who you are and say what you feel, because those who mind don't matter, and those who matter don't mind.”</p>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card h-100 bg-transparent border-secondary rounded-4">
+    <div class="card-body">
+      <h5 class="card-title text-white fw-bolder">Useful Links</h5>
+            
+            <ul class="list-group list-group-flush mt-3">
+              <li class="list-group-item bg-transparent border-secondary-subtle text-white d-flex align-items-center">
+                <i class="bi bi-question-circle me-3 fs-5"></i>
+                <a href="#" class="text-white text-decoration-none bounce-on-hover">Help Center</a>
+              </li>
+              <li class="list-group-item bg-transparent border-secondary-subtle text-white d-flex align-items-center">
+                <i class="bi bi-file-text me-3 fs-5"></i>
+                <a href="#" class="text-white text-decoration-none bounce-on-hover">Terms and Conditions</a>
+              </li>
+              <li class="list-group-item bg-transparent border-secondary-subtle text-white d-flex align-items-center">
+                <i class="bi bi-shield-check me-3 fs-5"></i>
+                <a href="#" class="text-white text-decoration-none bounce-on-hover">Privacy Policy</a>
+              </li>
+              <li class="list-group-item bg-transparent border-secondary-subtle text-white d-flex align-items-center">
+                <i class="bi bi-telephone me-3 fs-5"></i>
+                <a href="tel:+256123456789" class="text-white text-decoration-none bounce-on-hover">Telephone Number: +256-XXX-XXXXXX</a>
+              </li>
+              <li class="list-group-item bg-transparent border-secondary-subtle text-white d-flex align-items-center">
+                <i class="bi bi-envelope me-3 fs-5"></i>
+                <a href="mailto:support@campusconnect.ug" class="text-white text-decoration-none bounce-on-hover">Email: support@campusconnect.ug</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+          </div>
+          <div class="col">
+            <div class="card h-100 bg-transparent border-secondary text-white rounded-4">
+              <div class="card-body">
+                <h5 class="card-title fw-bolder">Interested in a Great Way <span style="color: #00b140;">Make Money</span></h5>
+                <p class="card-text">Sign up for an account and start writing articles just about anything to be eligible for monetization opportunities.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+       <!-- Footer end -->
+
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+  </body>
+</html>
